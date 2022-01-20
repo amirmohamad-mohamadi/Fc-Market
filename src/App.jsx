@@ -8,9 +8,11 @@ const App = () => {
   return (
     <div>
       <Header />
-      <Container>
-        <h2>FC Market</h2>
-      </Container>
+      <main>
+        <Container className="py-3">
+          <h2>FC Market</h2>
+        </Container>
+      </main>
       <Footer />
     </div>
   );
