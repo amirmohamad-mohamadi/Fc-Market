@@ -2,12 +2,13 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Row, Col, Image, ListGroup, Button } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import productDetilAction from "../action/productAction";
 
 const Product = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const productDetail = useSelector((state) => state.productDetail);
   const { loading, product } = productDetail;
@@ -16,6 +17,10 @@ const Product = () => {
   useEffect(() => {
     dispatch(productDetilAction(id));
   }, [dispatch, id]);
+
+  const addToCartHandler = () => {
+    navigate(`/cart/${id}`);
+  };
 
   return (
     <div>
@@ -41,7 +46,13 @@ const Product = () => {
           <Col ls={3}>
             <ListGroup variant="flush">
               <ListGroup.Item>
-                <Button>افزودن به سبد خرید</Button>
+                <Button
+                  className="btn-block"
+                  type="button"
+                  onClick={addToCartHandler}
+                >
+                  افزودن به سبد خرید
+                </Button>
               </ListGroup.Item>
             </ListGroup>
           </Col>
