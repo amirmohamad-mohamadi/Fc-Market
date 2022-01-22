@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const cartAction = (id) => async (dispatch, getState) => {
-  const { data } = axios.get(`http://localhost:8000/api/products/${id}`);
+  const { data } = await axios.get(`http://localhost:8000/api/products/${id}`);
 
   dispatch({
     type: "Cart_ADD_ITEMS",
