@@ -4,13 +4,13 @@ import { Card } from "react-bootstrap";
 
 const Product = ({ product }) => {
   return (
-    <Card className="my-3 p-3 rounded">
+    <Card className="my-3 p-3 rounded   text-decoration-none">
       <Link to={`/product/${product._id}`}>
         <Card.Img src={product.image} />
       </Link>
 
       <Card.Body>
-        <Link to={`/product/${product._id}`}>
+        <Link to={`/product/${product._id}`} className="text-decoration-none">
           <Card.Title as="div">{product.name}</Card.Title>
         </Link>
       </Card.Body>
