@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { Row, Col, ListGroup, Image, Button } from "react-bootstrap";
+import { Row, Col, ListGroup, Image, Button, Card } from "react-bootstrap";
 
-import { cartAction } from "../action/cartAction";
+import { cartAction, removeCartAction } from "../action/cartAction";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ const Cart = () => {
   }, [dispatch, id]);
 
   const removeFromCartHandler = (id) => {
-    console.log("REMOVE");
+    dispatch(removeCartAction(id));
   };
 
   return (
@@ -52,7 +52,16 @@ const Cart = () => {
             </ListGroup>
           )}
         </Col>
-        <Col md={4}></Col>
+        <Col md={4}>
+          <Card>
+            <ListGroup variant="flushّ">
+              <ListGroup.Item>
+                مجموع قیمت:
+                {cartItems.reduce((acc, item) => acc + item.price, 0)}
+              </ListGroup.Item>
+            </ListGroup>
+          </Card>
+        </Col>
       </Row>
     </div>
   );
